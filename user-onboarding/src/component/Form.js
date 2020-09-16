@@ -15,6 +15,9 @@ export default function Form() {
     email: "",
   });
 
+  //state for post request
+  const [post, setPost] = useState([]);
+
   //state for toggle submit button
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
@@ -30,14 +33,15 @@ export default function Form() {
     //destructure the event objects
     const { name, value, checked, type } = e.target;
     //prepare userData to be validate based on 'value' or 'checked' etc
-    // const prepareUserData = {
-    //   ...userData,
-    //   [name]: type === "checkbox" ? checked : value,
-    // };
+    const prepareUserData = {
+      ...userData,
+      [name]: type === "checkbox" ? checked : value,
+    };
     //send these destructured props to get validated
     validateChange(name, value);
     //update userData with 'prepareUserData' regardless if it passes validation
-    setUserData({ ...userData, [name]: value });
+    // setUserData({ ...userData, [name]: value });
+    setUserData(prepareUserData);
   };
 
   const validateChange = (name, value) => {
