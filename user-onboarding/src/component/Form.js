@@ -66,6 +66,20 @@ export default function Form() {
 
   const submit = (e) => {
     e.preventDefault();
+    axios
+      .post("https://reqres.in/api/users", userData)
+      .then((res) => {
+        setPost(res.data);
+        console.log("success!", post);
+        // reset form
+        setUserData({
+          name: "",
+          email: "",
+        });
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
   };
 
   return (
@@ -95,6 +109,7 @@ export default function Form() {
         ) : null}
       </label>
       <button disabled={buttonDisabled}>Submit</button>
+      <pre>{JSON.stringify(post, null, 2)}</pre>
     </form>
   );
 }
