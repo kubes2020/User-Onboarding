@@ -42,7 +42,7 @@ export default function Form() {
       [name]: type === "checkbox" ? checked : value,
     };
     //send these destructured props to get validated
-    validateChange(name, value);
+    validateChange(name, value, checked);
     //update userData with 'prepareUserData' regardless if it passes validation
     // setUserData({ ...userData, [name]: value });
     setUserData(prepareUserData);
@@ -70,6 +70,7 @@ export default function Form() {
       .string()
       .min(5, "must be at least 5 characters")
       .required("yo, pw is required"),
+    terms: yup.boolean().oneOf([true], "please agree to terms"),
   });
 
   const submit = (e) => {
@@ -90,7 +91,7 @@ export default function Form() {
         console.log(err.response);
       });
   };
-  console.log("success!", post);
+  // console.log("success!", post);
   return (
     <form onSubmit={submit}>
       <label htmlFor="name">
@@ -124,6 +125,16 @@ export default function Form() {
           name="password"
           id="password"
           value={userData.password}
+          onChange={onChange}
+        ></input>
+      </label>
+      <label htmlFor="terms">
+        Terms:
+        <input
+          type="checkbox"
+          name="terms"
+          id="terms"
+          checked={userData.terms}
           onChange={onChange}
         ></input>
       </label>
