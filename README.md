@@ -14,6 +14,8 @@ We've seen many different styles of form management by now -- simple to complex.
   - `axios`
 - [ ] Create a component file called `Form.js`, import it into your `App.js` file, and place the component in your JSX there.
 
+**\* if I'm using cyress, don't forget this folder is nested with same name.../lambda_unit2/user-onboarding/user-onboarding then you can 'npm start' and on other term 'npx cypress open' **
+
 ### Task 2a: MVP
 
 #### Create Your Advanced Form
@@ -66,5 +68,5 @@ The following are stretch goals that you should attempt _after_ you meet MVP for
 
 ## Submission Format
 
-* [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request**
-* [ ] Fill out your module retrospective form [here](https://forms.lambdaschool.com/module-retrospective) with a link to your PR
+- [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's Repo). **Please don't merge your own pull request**
+- [ ] Fill out your module retrospective form [here](https://forms.lambdaschool.com/module-retrospective) with a link to your PR
