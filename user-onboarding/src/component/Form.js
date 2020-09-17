@@ -7,12 +7,16 @@ export default function Form() {
   const [userData, setUserData] = useState({
     name: "",
     email: "",
+    password: "",
+    terms: "",
   });
 
   //state for error messages
   const [errors, setErrors] = useState({
     name: "",
     email: "",
+    password: "",
+    terms: "",
   });
 
   //state for post request
@@ -62,6 +66,10 @@ export default function Form() {
       .string()
       .email("must be valid email")
       .required("your email is required"),
+    password: yup
+      .string()
+      .min(5, "must be at least 5 characters")
+      .required("yo, pw is required"),
   });
 
   const submit = (e) => {
@@ -75,13 +83,14 @@ export default function Form() {
         setUserData({
           name: "",
           email: "",
+          password: "",
         });
       })
       .catch((err) => {
         console.log(err.response);
       });
   };
-
+  console.log("success!", post);
   return (
     <form onSubmit={submit}>
       <label htmlFor="name">
@@ -107,6 +116,16 @@ export default function Form() {
         {errors.email.length > 0 ? (
           <p className="error">{errors.email}</p>
         ) : null}
+      </label>
+      <label htmlFor="password">
+        password
+        <input
+          type="password"
+          name="password"
+          id="password"
+          value={userData.password}
+          onChange={onChange}
+        ></input>
       </label>
       <button disabled={buttonDisabled}>Submit</button>
       <pre>{JSON.stringify(post, null, 2)}</pre>
