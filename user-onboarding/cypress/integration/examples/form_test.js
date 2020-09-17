@@ -27,7 +27,7 @@ describe("Test form", function () {
   });
 });
 
-describe("Test form submit", () => {
+describe("Test form submit, with no beforeEach reset", () => {
   it("go to url", () => {
     cy.visit("http://localhost:3000/");
   });
@@ -46,5 +46,17 @@ describe("Test form submit", () => {
     passwordInput().type("12345");
     termsButton().check();
     submitButton().click();
+  });
+
+  it("go to url", () => {
+    cy.visit("http://localhost:3000/");
+  });
+
+  it("test display of submit button if missing required field", () => {
+    nameInput().type("Brian");
+    emailInput().type("briankubes@gmail.com");
+    passwordInput().type("12345");
+    //left out the termsButton click
+    submitButton().should("be.disabled");
   });
 });
