@@ -42,7 +42,7 @@ export default function Form() {
       [name]: type === "checkbox" ? checked : value,
     };
     //send these destructured props to get validated
-    validateChange(name, value, checked);
+    validateChange(name, value);
     //update userData with 'prepareUserData' regardless if it passes validation
     // setUserData({ ...userData, [name]: value });
     setUserData(prepareUserData);
@@ -85,6 +85,7 @@ export default function Form() {
           name: "",
           email: "",
           password: "",
+          terms: "",
         });
       })
       .catch((err) => {
